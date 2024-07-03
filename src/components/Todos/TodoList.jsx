@@ -1,13 +1,23 @@
+import React from "react";
+import { useSelector } from "react-redux";
+import TodoItem from "./TodoItem";
 
-import React from 'react'
 
 function TodoList() {
+  const { todos } = useSelector((state) => state.todos);
   return (
-    <div>TodoList</div>
-  )
+    <div>
+      <h2>TodoList</h2>
+      <ul className="list-group">
+        {todos.map((todo) => (
+          <TodoItem key={todo.id} {...todo} />
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default TodoList
+export default TodoList;
 // import { useDispatch, useSelector } from "react-redux";
 // import TodoItem from "./TodoItem";
 // import { useEffect } from "react";
@@ -22,15 +32,15 @@ export default TodoList
 //   }, []);
 
 //   return (
-//     <div>
-//       <h2>TodoList</h2>(
-//       <ul className="list-group">
-//         {todos.map((todo) => (
-//           <TodoItem key={todo.id} {...todo} />
-//         ))}
-//       </ul>
-//       )
-//     </div>
+// <div>
+//   <h2>TodoList</h2>(
+//   <ul className="list-group">
+//     {todos.map((todo) => (
+//       <TodoItem key={todo.id} {...todo} />
+//     ))}
+//   </ul>
+//   )
+// </div>
 //   );
 // };
 
